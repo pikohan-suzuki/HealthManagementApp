@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/todayFragment">
+
+    <fragment
+        android:id="@+id/todayFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.TodayFragment"
+        android:label="TodayFragment" >
+        <action
+            android:id="@+id/action_todayFragment_to_foodStuffs"
+            app:destination="@id/foodStuffsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditFoodStuff"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.FoodStaff.AddEditFoodStuff"
+        android:label="{title}" >
+        <argument
+            android:name="foodstuff_id"
+            app:argType="string"
+            app:nullable="true"/>
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_addEditFoodStuff_to_detailFoodStuffFragment"
+            app:destination="@id/detailFoodStuffFragment" />
+        <action
+            android:id="@+id/action_addEditFoodStuff_to_foodStuffs"
+            app:destination="@id/foodStuffsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFoodStuffFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.FoodStaff.DetailFoodStuffFragment"
+        android:label="DetailFoodStuffFragment" >
+        <action
+            android:id="@+id/action_detailFoodStuffFragment_to_addEditFoodStuff"
+            app:destination="@id/addEditFoodStuff" />
+        <action
+            android:id="@+id/action_detailFoodStuffFragment_to_foodStuffs"
+            app:destination="@id/foodStuffsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodStuffsFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.FoodStaff.FoodStuffs"
+        android:label="FoodStuffs" >
+        <action
+            android:id="@+id/action_foodStuffs_to_detailFoodStuffFragment"
+            app:destination="@id/detailFoodStuffFragment" />
+        <action
+            android:id="@+id/action_foodStuffs_to_addEditFoodStuff"
+            app:destination="@id/addEditFoodStuff" />
+        <action
+            android:id="@+id/action_foodStuffs_to_todayFragment"
+            app:destination="@id/todayFragment" />
+    </fragment>
+</navigation>

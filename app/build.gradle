@@ -24,6 +24,9 @@ android {
     dataBinding {
         enabled = true
     }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
 }
 
 dependencies {
@@ -60,4 +63,12 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui:1.0.0"
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0"
+
+    //dataBinding
+    kapt 'com.android.databinding:compiler:1.0-rc5'
+    kapt "com.android.databinding:compiler:$android_plugin_version"
+}
+
+kapt {
+    generateStubs = true
 }

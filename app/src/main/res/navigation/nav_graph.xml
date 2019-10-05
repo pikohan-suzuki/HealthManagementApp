@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEditFoodStuff"
-        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.FoodStaff.AddEditFoodStuff"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.AddEditFoodStuff"
         android:label="{title}" >
         <argument
             android:name="foodstuff_id"
@@ -34,8 +34,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailFoodStuffFragment"
-        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.FoodStaff.DetailFoodStuffFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.DetailFoodStuffFragment"
         android:label="DetailFoodStuffFragment" >
+        <argument
+            android:name="foodstuff_id"
+            app:argType="string"
+            app:nullable="false"/>
         <action
             android:id="@+id/action_detailFoodStuffFragment_to_addEditFoodStuff"
             app:destination="@id/addEditFoodStuff" />
@@ -45,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodStuffsFragment"
-        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.FoodStaff.FoodStuffs"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.FoodStuffsFragment"
         android:label="FoodStuffs" >
         <action
             android:id="@+id/action_foodStuffs_to_detailFoodStuffFragment"

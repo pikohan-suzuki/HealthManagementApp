@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.detailFoodStuff.DetailFoodStuffViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/detail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.name}" />
+
+        <TextView
+            android:id="@+id/detail_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.weightForList}" />
+
+        <TextView
+            android:id="@+id/detail_food_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.foodGroupForList}" />
+
+        <TextView
+            android:id="@+id/detail_kcal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.kcalPerForList}" />
+
+        <TextView
+            android:id="@+id/detail_protein"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.proteinPerForList}" />
+
+        <TextView
+            android:id="@+id/detail_carbohydrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.carbohydratePerForList}" />
+
+        <TextView
+            android:id="@+id/detail_fat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.foodStuff.fatPerForList}" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/detail_foodstuff_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:onClick="@{() -> viewModel.editFoodStuff()}"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+        </FrameLayout>
+    </LinearLayout>
+
+</layout>

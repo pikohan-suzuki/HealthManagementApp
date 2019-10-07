@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.AddEditFoodStuffViewModel" />
+            type="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.addEditFoodStuff.AddEditFoodStuffViewModel" />
     </data>
 
     <LinearLayout

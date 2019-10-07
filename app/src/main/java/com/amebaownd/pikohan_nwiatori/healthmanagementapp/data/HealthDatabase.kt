@@ -20,8 +20,8 @@ abstract class HealthDatabase:RoomDatabase(){
         private var INSTANCE : HealthDatabase?=null
 
         fun getDatabase(
-            context: Context,
-            scope:CoroutineScope
+            context: Context
+            //scope:CoroutineScope
         ):HealthDatabase{
             val tempInstance = INSTANCE
             if(tempInstance!=null) {
@@ -33,7 +33,7 @@ abstract class HealthDatabase:RoomDatabase(){
                     HealthDatabase::class.java,
                     "health_database"
                 )
-                    .addCallback(RoomDatabaseCallback(scope))
+                    //.addCallback(RoomDatabaseCallback(scope))
                     .build()
 
                 INSTANCE = instance

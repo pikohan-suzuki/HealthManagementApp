@@ -67,6 +67,12 @@ dependencies {
     //dataBinding
     kapt 'com.android.databinding:compiler:1.0-rc5'
     kapt "com.android.databinding:compiler:$android_plugin_version"
+
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+    implementation "androidx.fragment:fragment-testing:$fragmentVersion"
+    implementation "androidx.test:core:$androidXTestCoreVersion"
+    implementation "androidx.fragment:fragment:$fragmentVersion"
 }
 
 kapt {

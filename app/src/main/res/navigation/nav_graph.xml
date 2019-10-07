@@ -10,12 +10,12 @@
         android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.TodayFragment"
         android:label="TodayFragment" >
         <action
-            android:id="@+id/action_todayFragment_to_foodStuffs"
+            android:id="@+id/action_todayFragment_to_foodStuffsFragment"
             app:destination="@id/foodStuffsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addEditFoodStuff"
-        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.AddEditFoodStuff"
+        android:id="@+id/addEditFoodStuffFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.addEditFoodStuff.AddEditFoodStuffFragment"
         android:label="{title}" >
         <argument
             android:name="foodstuff_id"
@@ -29,22 +29,22 @@
             android:id="@+id/action_addEditFoodStuff_to_detailFoodStuffFragment"
             app:destination="@id/detailFoodStuffFragment" />
         <action
-            android:id="@+id/action_addEditFoodStuff_to_foodStuffs"
+            android:id="@+id/action_addEditFoodStuff_to_foodStuffsFragment"
             app:destination="@id/foodStuffsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFoodStuffFragment"
-        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.DetailFoodStuffFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.detailFoodStuff.DetailFoodStuffFragment"
         android:label="DetailFoodStuffFragment" >
         <argument
             android:name="foodstuff_id"
             app:argType="string"
             app:nullable="false"/>
         <action
-            android:id="@+id/action_detailFoodStuffFragment_to_addEditFoodStuff"
-            app:destination="@id/addEditFoodStuff" />
+            android:id="@+id/action_detailFoodStuffFragment_to_addEditFoodStuffFragment"
+            app:destination="@id/addEditFoodStuffFragment" />
         <action
-            android:id="@+id/action_detailFoodStuffFragment_to_foodStuffs"
+            android:id="@+id/action_detailFoodStuffFragment_to_foodStuffsFragment"
             app:destination="@id/foodStuffsFragment" />
     </fragment>
     <fragment
@@ -55,8 +55,8 @@
             android:id="@+id/action_foodStuffs_to_detailFoodStuffFragment"
             app:destination="@id/detailFoodStuffFragment" />
         <action
-            android:id="@+id/action_foodStuffs_to_addEditFoodStuff"
-            app:destination="@id/addEditFoodStuff" />
+            android:id="@+id/action_foodStuffs_to_addEditFoodStuffFragment"
+            app:destination="@id/addEditFoodStuffFragment" />
         <action
             android:id="@+id/action_foodStuffs_to_todayFragment"
             app:destination="@id/todayFragment" />

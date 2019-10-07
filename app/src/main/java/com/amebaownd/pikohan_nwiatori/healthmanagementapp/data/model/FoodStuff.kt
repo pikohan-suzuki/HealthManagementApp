@@ -25,6 +25,10 @@ data class FoodStuff(
     @ColumnInfo(name = "total_fat")
     val fat_per: Float
 ) {
+    val weightForList
+        get() = weight.toString()
+    val foodGroupForList
+        get() = food_group.toString()
     val kcalPerForList
         get() = kcal_per.toString()
     val proteinPerForList

@@ -12,11 +12,8 @@ interface FoodStuffDao {
     @Query("SELECT * FROM foodstuff_table ORDER BY foodstuff_id ASC")
     fun getAllFoodStuffs():LiveData<List<FoodStuff>>
 
-    @Query("SELECT * FROM foodstuff_table WHERE foodstuff_id =(:id)")
-    fun getById(id:String):FoodStuff
-
-    @Query("SELECT * FROM foodstuff_table WHERE foodstuff_id =(:id)")
-    fun getById2(id:String):LiveData<List<FoodStuff>>
+    @Query("SELECT * FROM foodstuff_table WHERE foodstuff_id =(:id) LIMIT 1")
+    fun getById(id:String):LiveData<FoodStuff>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(foodStuff: FoodStuff)

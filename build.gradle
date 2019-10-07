@@ -35,7 +35,4 @@ ext {
     archLifecycleVersion = '2.2.0-alpha01'
     androidxArchVersion = '2.0.0'
     coroutines = '1.2.0'
-    fragmentVersion = '1.1.0-alpha07'
-    fragmentKtxVersion = '1.1.0-rc01'
-    androidXTestCoreVersion = '1.2.0'
 }

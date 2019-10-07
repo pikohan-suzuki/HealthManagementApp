@@ -4,43 +4,37 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.viewModels
+import com.amebaownd.pikohan_nwiatori.healthmanagementapp.EventObserver
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.R
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.databinding.FragmentFoodstuffsBinding
+import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.getViewModelFactory
 import kotlinx.android.synthetic.main.fragment_foodstuffs.*
 
-class FoodStuffsFragment: Fragment() {
+class FoodStuffsFragment : Fragment() {
 
-    private  val foodStuffViewModel: FoodStuffViewModel by lazy { ViewModelProviders.of(this).get(FoodStuffViewModel::class.java)}
+    private val foodStuffViewModel: FoodStuffViewModel by viewModels<FoodStuffViewModel> { getViewModelFactory() }
 
-    private lateinit var viewDataBinding:FragmentFoodstuffsBinding
-    private lateinit var listAdapter:FoodStuffsAdapter
+    private lateinit var viewDataBinding: FragmentFoodstuffsBinding
+    private lateinit var listAdapter: FoodStuffsAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewDataBinding = FragmentFoodstuffsBinding.inflate(inflater,container,false).apply {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewDataBinding = FragmentFoodstuffsBinding.inflate(inflater, container, false).apply {
             viewModel = foodStuffViewModel
         }
+        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         setHasOptionsMenu(true)
         return viewDataBinding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-
-//        foodStuffViewModel = ViewModelProviders.of(this).get(FoodStuffViewModel::class.java)
-
-
-
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         setupRecyclerView()
         setupFub()
         openDetail()
@@ -53,47 +47,55 @@ class FoodStuffsFragment: Fragment() {
         }
     }
 
-    private fun openFilterPopUpMenu(){
+    private fun openFilterPopUpMenu() {
 
     }
 
-    private fun setupFub(){
+    private fun setupFub() {
         add_foodstuff_fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
             navigateToAddFoodstuffFragment()
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu,inflater: MenuInflater) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_list, menu)
     }
 
-    private fun navigateToAddFoodstuffFragment(){
-        val action=
+    private fun navigateToAddFoodstuffFragment() {
+        val action =
             FoodStuffsFragmentDirections
-                .actionFoodStuffsToAddEditFoodStuff(
-                null,
+                .actionFoodStuffsToAddEditFoodStuffFragment(
+                    null,
                     "Add Foodstuff"
                 )
-       findNavController().navigate(action)
+        findNavController().navigate(action)
     }
 
-    private fun openDetail(){
-        foodStuffViewModel.openDetailEvent.observe(this, Observer {
-            val action =
-                FoodStuffsFragmentDirections
-                .actionFoodStuffsToDetailFoodStuffFragment(it)
-            findNavController().navigate(action)
+    private fun openDetail() {
+        foodStuffViewModel.openDetailEvent.observe(this, EventObserver {
+            if(it.isNotBlank() && it.isNotEmpty()) {
+                val action =
+                    FoodStuffsFragmentDirections
+                        .actionFoodStuffsToDetailFoodStuffFragment(it)
+                findNavController().navigate(action)
+            }
         })
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         val viewModel = viewDataBinding.viewModel
-        if(viewModel != null){
+        if (viewModel != null) {
             listAdapter = FoodStuffsAdapter(foodStuffViewModel)
-            viewDataBinding.foodstuffsList.adapter=listAdapter
-            viewDataBinding.foodstuffsList.addItemDecoration(DividerItemDecoration(this.context,DividerItemDecoration.VERTICAL))
+            viewDataBinding.foodstuffsList.adapter = listAdapter
+            viewDataBinding.foodstuffsList.addItemDecoration(
+                DividerItemDecoration(
+                    this.context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
     }
+
 }

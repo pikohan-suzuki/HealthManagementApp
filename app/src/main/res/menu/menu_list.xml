@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_sort"
         android:orderInCategory="100"
-        android:icon="@drawable/sort"
+        android:icon="@drawable/sort_24dp"
         android:title="@string/action_settings"
         app:showAsAction="always" />
     <item
@@ -13,4 +13,13 @@
         android:icon="@drawable/filter"
         android:title="@string/action_settings"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/filter_food_group1"
+        android:title="aaaaa"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/filter_food_group2"
+        android:title="aaaaa"
+        app:showAsAction="never" />
+
 </menu>

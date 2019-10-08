@@ -26,15 +26,23 @@ data class FoodStuff(
     val fat_per: Float
 ) {
     val weightForList
-        get() = weight.toString()
+        get() = weight.toString()+"g/one"
     val foodGroupForList
-        get() = food_group.toString()
+        get() = when(food_group){
+            1-> "Ⅰ.Meat,Beans,Eggs,Nuts"
+            2->"Ⅱ.Dairy products"
+            3->"Ⅲ.Vegetable"
+            4->"Ⅳ.Fruits"
+            5->"Ⅴ.Cereals"
+            6->"Ⅵ.Fats and Oils"
+            else->"Others"
+        }
     val kcalPerForList
-        get() = kcal_per.toString()
+        get() = kcal_per.toString()+"kcal"
     val proteinPerForList
-        get() = protein_per.toString()
+        get() = protein_per.toString()+"g"
     val carbohydratePerForList
-        get() = carbohydrate_per.toString()
+        get() = carbohydrate_per.toString()+"g"
     val fatPerForList
-        get() = fat_per.toString()
+        get() = fat_per.toString()+"g"
 }

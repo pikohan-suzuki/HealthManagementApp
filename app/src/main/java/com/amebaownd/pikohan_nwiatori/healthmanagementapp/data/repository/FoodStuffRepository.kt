@@ -13,6 +13,14 @@ class FoodStuffRepository(private val foodStuffDao: FoodStuffDao) {
         foodStuffDao.insert(foodStuff)
     }
 
+    suspend fun update(foodStuff: FoodStuff){
+        foodStuffDao.update(foodStuff)
+    }
+
+    suspend fun delete(foodStuff: FoodStuff){
+        foodStuffDao.delete(foodStuff)
+    }
+
      fun loadFoodStuff(id: String):FoodStuff {
 //        val aaa = foodStuffDao.getById(id)
 //        val aaaaa = foodStuffDao.getById2(id)

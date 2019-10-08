@@ -2,4 +2,13 @@
     <string name="app_name">HealthManagementApp</string>
     <string name="action_settings">Settings</string>
     <string name="foodstuffs">FoodStuffs</string>
+    <string name="gram">%sg</string>
+    <string name="_100g">100g</string>
+    <string name="food_group1">Ⅰ.Meat,Beans,Eggs,Nuts</string>
+    <string name="food_group2">Ⅱ.Dairy products</string>
+    <string name="food_group3">Ⅲ.Vegetable</string>
+    <string name="food_group4">Ⅳ.Fruits</string>
+    <string name="food_group5">Ⅴ.Cereals</string>
+    <string name="food_group6">Ⅵ.Fats and Oils</string>
+    <string name="food_group_others">Others</string>
 </resources>

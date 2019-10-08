@@ -35,11 +35,11 @@
     <fragment
         android:id="@+id/detailFoodStuffFragment"
         android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.detailFoodStuff.DetailFoodStuffFragment"
-        android:label="DetailFoodStuffFragment" >
+        android:label="DetailFoodStuffFragment">
         <argument
             android:name="foodstuff_id"
             app:argType="string"
-            app:nullable="false"/>
+            app:nullable="false" />
         <action
             android:id="@+id/action_detailFoodStuffFragment_to_addEditFoodStuffFragment"
             app:destination="@id/addEditFoodStuffFragment" />

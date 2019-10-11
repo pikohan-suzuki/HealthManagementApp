@@ -1,7 +1,7 @@
 package com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.detailFoodStuff
 
 import androidx.lifecycle.*
-import com.amebaownd.pikohan_nwiatori.healthmanagementapp.Event
+import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.Event
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.model.FoodStuff
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.repository.FoodStuffRepository
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +38,9 @@ class DetailFoodStuffViewModel(private val repository: FoodStuffRepository) : Vi
     private var _isEditStarted: MutableLiveData<Event<Boolean>> = MutableLiveData()
     val isEditStarted: LiveData<Event<Boolean>> = _isEditStarted
 
-    val isDeleted: MutableLiveData<Event<Boolean>> = MutableLiveData(Event(false))
+    val isDeleted: MutableLiveData<Event<Boolean>> = MutableLiveData(
+        Event(false)
+    )
 
     fun start(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -46,7 +48,7 @@ class DetailFoodStuffViewModel(private val repository: FoodStuffRepository) : Vi
             _foodStuff.postValue(foodStuff)
             foodStuff.let {
                 _name.postValue(it.name)
-                _category.postValue(it.foodGroupForList)
+                _category.postValue(it.foodGroupForList.str)
                 _weightOfOne.postValue(it.weightForList)
                 _calories.postValue(String.format("%.1f",it.kcal_per) + "kcal")
                 _protein.postValue(String.format("%.1f",it.protein_per) + "g")
@@ -85,7 +87,11 @@ class DetailFoodStuffViewModel(private val repository: FoodStuffRepository) : Vi
         _foodStuff.value?.let {
             viewModelScope.launch(Dispatchers.IO) {
                 repository.delete(it)
-                isDeleted.postValue(Event(true))
+                isDeleted.postValue(
+                    Event(
+                        true
+                    )
+                )
             }
         }
 

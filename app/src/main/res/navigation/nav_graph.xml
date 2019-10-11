@@ -12,6 +12,18 @@
         <action
             android:id="@+id/action_todayFragment_to_foodStuffsFragment"
             app:destination="@id/foodStuffsFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_dishesFragment"
+            app:destination="@id/dishesFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_aerobicExercisesFragment"
+            app:destination="@id/aerobicExercisesFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_stumpBookFragment"
+            app:destination="@id/stumpBookFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_schedulesFragment"
+            app:destination="@id/schedulesFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditFoodStuffFragment"
@@ -27,7 +39,9 @@
             app:nullable="false"/>
         <action
             android:id="@+id/action_addEditFoodStuff_to_detailFoodStuffFragment"
-            app:destination="@id/detailFoodStuffFragment" />
+            app:destination="@id/detailFoodStuffFragment"
+            app:popUpTo="@+id/detailFoodStuffFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addEditFoodStuff_to_foodStuffsFragment"
             app:destination="@id/foodStuffsFragment" />
@@ -43,9 +57,6 @@
         <action
             android:id="@+id/action_detailFoodStuffFragment_to_addEditFoodStuffFragment"
             app:destination="@id/addEditFoodStuffFragment" />
-        <action
-            android:id="@+id/action_detailFoodStuffFragment_to_foodStuffsFragment"
-            app:destination="@id/foodStuffsFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodStuffsFragment"
@@ -58,7 +69,176 @@
             android:id="@+id/action_foodStuffs_to_addEditFoodStuffFragment"
             app:destination="@id/addEditFoodStuffFragment" />
         <action
-            android:id="@+id/action_foodStuffs_to_todayFragment"
-            app:destination="@id/todayFragment" />
+            android:id="@+id/action_foodStuffsFragment_to_addEditDishFragment"
+            app:destination="@+id/addEditDishFragment"
+            app:popUpTo="@id/addEditDishFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="is_add_edit_dish"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_foodStuffsFragment_to_muscleTrainingsFragment"
+            app:destination="@id/muscleTrainingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dishesFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.dish.DishesFragment"
+        android:label="DishesFragment" >
+        <action
+            android:id="@+id/action_dishesFragment_to_detailDishFragment"
+            app:destination="@id/detailDishFragment" />
+        <action
+            android:id="@+id/action_dishesFragment_to_addEditDishFragment"
+            app:destination="@id/addEditDishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditDishFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.dish.addEditDish.AddEditDishFragment"
+        android:label="{title}" >
+        <action
+            android:id="@+id/action_addEditDishFragment_to_dishesFragment"
+            app:destination="@id/dishesFragment" />
+        <action
+            android:id="@+id/action_addEditDishFragment_to_detailDishFragment"
+            app:destination="@id/detailDishFragment" />
+        <argument
+            android:name="dish_id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addEditDishFragment_to_foodStuffsFragment"
+            app:destination="@id/foodStuffsFragment" />
+        <argument android:name="foodstuff"
+            app:argType="com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.model.FoodStuff"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDishFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.dish.detailDish.DetailDishFragment"
+        android:label="DetailDishFragment" >
+        <action
+            android:id="@+id/action_detailDishFragment_to_addEditDishFragment"
+            app:destination="@id/addEditDishFragment" />
+        <argument
+            android:name="dish_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/aerobicExercisesFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.aerobicExercise.AerobicExercisesFragment"
+        android:label="AerobicExercisesFragment" >
+        <action
+            android:id="@+id/action_aerobicExercisesFragment_to_detailAerobicExerciseFragment"
+            app:destination="@id/detailAerobicExerciseFragment" />
+        <action
+            android:id="@+id/action_aerobicExercisesFragment_to_addEditAerobicExerciseFragment"
+            app:destination="@id/addEditAerobicExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailAerobicExerciseFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.aerobicExercise.detailAerobicExercise.DetailAerobicExerciseFragment"
+        android:label="DetailAerobicExerciseFragment" >
+        <action
+            android:id="@+id/action_detailAerobicExerciseFragment_to_addEditAerobicExerciseFragment"
+            app:destination="@id/addEditAerobicExerciseFragment" />
+        <argument
+            android:name="aerobic_exercise_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditAerobicExerciseFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.aerobicExercise.addEditAerobicExercise.AddEditAerobicExerciseFragment"
+        android:label="AddEditAerobicExerciseFragment" >
+        <action
+            android:id="@+id/action_addEditAerobicExerciseFragment_to_setHardAerobicExerciseFragment"
+            app:destination="@id/setHardAerobicExerciseFragment" />
+        <argument
+            android:name="aerobic_exercise_id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/setHardAerobicExerciseFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.aerobicExercise.setHardAerobicExercise.SetHardAerobicExerciseFragment"
+        android:label="SetHardAerobicExerciseFragment" >
+        <action
+            android:id="@+id/action_setHardAerobicExerciseFragment_to_addEditAerobicExerciseFragment"
+            app:destination="@id/addEditAerobicExerciseFragment"
+            app:popUpTo="@+id/addEditAerobicExerciseFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/muscleTrainingsFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.muscleTraining.MuscleTrainingsFragment"
+        android:label="MuscleTrainingsFragment" >
+        <action
+            android:id="@+id/action_muscleTrainingsFragment_to_detailMuscleTrainingFragment"
+            app:destination="@id/detailMuscleTrainingFragment" />
+        <action
+            android:id="@+id/action_muscleTrainingsFragment_to_addEditMuscleTrainingFramgnet"
+            app:destination="@id/addEditMuscleTrainingFramgnet" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditMuscleTrainingFramgnet"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.muscleTraining.addEditMuscleTraining.AddEditMuscleTrainingFramgnet"
+        android:label="AddEditMuscleTrainingFramgnet" >
+        <argument
+            android:name="muscle_training_id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addEditMuscleTrainingFramgnet_to_detailMuscleTrainingFragment"
+            app:destination="@id/detailMuscleTrainingFragment"
+            app:popUpTo="@+id/addEditMuscleTrainingFramgnet"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMuscleTrainingFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.muscleTraining.detailMuscleTraining.DetailMuscleTrainingFragment"
+        android:label="DetailMuscleTrainingFragment" >
+        <action
+            android:id="@+id/action_detailMuscleTrainingFragment_to_addEditMuscleTrainingFramgnet"
+            app:destination="@id/addEditMuscleTrainingFramgnet" />
+        <argument
+            android:name="muscle_training_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/stumpBookFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.stumpBook.StumpBookFragment"
+        android:label="StumpBookFragment" />
+    <fragment
+        android:id="@+id/schedulesFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.schedule.SchedulesFragment"
+        android:label="SchedulesFragment" >
+        <action
+            android:id="@+id/action_schedulesFragment_to_detailScheduleFragment"
+            app:destination="@id/detailScheduleFragment" />
+        <action
+            android:id="@+id/action_schedulesFragment_to_scheduleCalenderFragment"
+            app:destination="@id/scheduleCalenderFragment" />
+        <action
+            android:id="@+id/action_schedulesFragment_to_addEditScheduleFragment"
+            app:destination="@id/addEditScheduleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailScheduleFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.schedule.detailSchedule.DetailScheduleFragment"
+        android:label="DetailScheduleFragment" >
+        <action
+            android:id="@+id/action_detailScheduleFragment_to_addEditScheduleFragment"
+            app:destination="@id/addEditScheduleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleCalenderFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.schedule.calendar.ScheduleCalenderFragment"
+        android:label="ScheduleCalenderFragment" />
+    <fragment
+        android:id="@+id/addEditScheduleFragment"
+        android:name="com.amebaownd.pikohan_nwiatori.healthmanagementapp.schedule.addEditSchedule.AddEditScheduleFragment"
+        android:label="AddEditScheduleFragment" />
 </navigation>

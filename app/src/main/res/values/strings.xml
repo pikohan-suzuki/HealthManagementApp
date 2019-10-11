@@ -11,4 +11,14 @@
     <string name="food_group5">Ⅴ.Cereals</string>
     <string name="food_group6">Ⅵ.Fats and Oils</string>
     <string name="food_group_others">Others</string>
+    <string name="dish_group1">Ⅰ.Appetizer</string>
+    <string name="dish_group2">Ⅱ.Salad</string>
+    <string name="dish_group3">Ⅲ.Soup</string>
+    <string name="dish_group4">Ⅳ.MainDish</string>
+    <string name="dish_group5">Ⅴ.SideDish</string>
+    <string name="dish_group6">Ⅵ.Desserts</string>
+    <string name="dish_group_others">Others</string>
+    <string name="edit_dish_title">Edit Dish</string>
+    <string name="add_dish_title">Add Dish</string>
+    <string name="dishes_title">Dishes</string>
 </resources>

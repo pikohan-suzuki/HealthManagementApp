@@ -9,4 +9,22 @@
         <item>@string/food_group6</item>
         <item>@string/food_group_others</item>
     </array>
+    <array name="dish_group">
+        <item>@string/dish_group1</item>
+        <item>@string/dish_group2</item>
+        <item>@string/dish_group3</item>
+        <item>@string/dish_group4</item>
+        <item>@string/dish_group5</item>
+        <item>@string/dish_group6</item>
+        <item>@string/dish_group_others</item>
+    </array>
+    <array name="spinner_values">
+        <item>1/4</item>
+        <item>1/2</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </array>
 </resources>

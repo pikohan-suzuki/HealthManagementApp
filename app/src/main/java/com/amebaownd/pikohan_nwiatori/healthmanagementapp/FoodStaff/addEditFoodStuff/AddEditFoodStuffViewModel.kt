@@ -1,24 +1,16 @@
 package com.amebaownd.pikohan_nwiatori.healthmanagementapp.foodstaff.addEditFoodStuff
 
-import android.app.Application
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.lifecycle.*
-import com.amebaownd.pikohan_nwiatori.healthmanagementapp.Event
-import com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.HealthDatabase
+import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.Event
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.model.FoodStuff
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.repository.FoodStuffRepository
-import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.HealthManagementApp
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.MyContext
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.R
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.coroutineContext
+import com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.model.FoodGroup
+import java.lang.Exception
 
 class AddEditFoodStuffViewModel( private val repository: FoodStuffRepository) : ViewModel() {
 
@@ -38,7 +30,9 @@ class AddEditFoodStuffViewModel( private val repository: FoodStuffRepository) : 
     private var _isEditMode: MutableLiveData<Boolean> = MutableLiveData(true)
     val isEditMode: LiveData<Boolean> = _isEditMode
 
-    private var _dialogOpenEvent = MutableLiveData<Event<Boolean>>(Event(false))
+    private var _dialogOpenEvent = MutableLiveData<Event<Boolean>>(
+        Event(false)
+    )
     val dialogOpenEvent : LiveData<Event<Boolean>> = _dialogOpenEvent
 
     private var isGramSaveMode:MutableLiveData<Boolean> = MutableLiveData(true)
@@ -50,7 +44,7 @@ class AddEditFoodStuffViewModel( private val repository: FoodStuffRepository) : 
                     _foodStuff.postValue(foodStuff)
                     name.postValue(foodStuff.name)
                     weight.postValue(String.format("%d",foodStuff.weight))
-                    category.postValue(foodStuff.foodGroupForList)
+                    category.postValue(foodStuff.foodGroupForList.str)
                     kcalPer.postValue(String.format("%.1f",foodStuff.kcal_per))
                     proteinPer.postValue(String.format("%.1f",foodStuff.protein_per))
                     carbohydratePer.postValue(String.format("%.1f",foodStuff.carbohydrate_per))
@@ -73,14 +67,14 @@ class AddEditFoodStuffViewModel( private val repository: FoodStuffRepository) : 
     }
 
     fun showDialog(){
-        _dialogOpenEvent.value=Event(true)
+        _dialogOpenEvent.value= Event(true)
     }
 
     fun onFoodGroupSelected(foodGroup: String){
         category.value=foodGroup
     }
     fun onDialogCanceledOrDismissed(){
-        _dialogOpenEvent.value=Event(false)
+        _dialogOpenEvent.value= Event(false)
     }
 
     private fun insert(foodStuff: FoodStuff) = viewModelScope.launch {
@@ -134,13 +128,15 @@ class AddEditFoodStuffViewModel( private val repository: FoodStuffRepository) : 
                         fat_per = this.fatPer.value!!.toFloat(),
                         weight = this.weight.value!!.toInt(),
                         food_group = when(this.category.value){
-                            MyContext.getString(R.string.food_group1)->1
-                            MyContext.getString(R.string.food_group2)->2
-                            MyContext.getString(R.string.food_group3)->3
-                            MyContext.getString(R.string.food_group4)->4
-                            MyContext.getString(R.string.food_group5)->5
-                            MyContext.getString(R.string.food_group6)->6
-                            else ->7
+                            FoodGroup.CATEGORY1.str->1
+                            FoodGroup.CATEGORY2.str->2
+                            FoodGroup.CATEGORY3.str->3
+                            FoodGroup.CATEGORY4.str->4
+                            FoodGroup.CATEGORY5.str->5
+                            FoodGroup.CATEGORY6.str->6
+                            FoodGroup.OTHERS.str->7
+                            else->
+                                throw Exception("Unknown FoodGroup.")
                         }
                     )?.let {currentFoodStuff ->
                         update(currentFoodStuff)

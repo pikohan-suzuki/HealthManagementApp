@@ -5,4 +5,8 @@
         android:id="@+id/foodStuffsFragment"
         android:icon="@drawable/filter"
         android:title="@string/foodstuffs" />
+    <item
+        android:id="@+id/dishesFragment"
+        android:icon="@drawable/edit"
+        android:title="@string/dishes_title"/>
 </menu>

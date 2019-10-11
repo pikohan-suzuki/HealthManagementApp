@@ -21,6 +21,10 @@ class FoodStuffRepository(private val foodStuffDao: FoodStuffDao) {
         foodStuffDao.delete(foodStuff)
     }
 
+    fun loadAllFoodStuffs():List<FoodStuff>{
+        return foodStuffDao.getAll()
+    }
+
      fun loadFoodStuff(id: String):FoodStuff {
 //        val aaa = foodStuffDao.getById(id)
 //        val aaaaa = foodStuffDao.getById2(id)
@@ -31,5 +35,10 @@ class FoodStuffRepository(private val foodStuffDao: FoodStuffDao) {
 //        val ccc =allFoodStuffs.value
 //        val cccc = ccc?.filter { it.id==id }
      return foodStuffDao.getById(id)
+    }
+
+    fun loadFiltered(regex:String):List<FoodStuff>{
+        val key =regex+"%"
+        return foodStuffDao.getByRegex(key)
     }
 }

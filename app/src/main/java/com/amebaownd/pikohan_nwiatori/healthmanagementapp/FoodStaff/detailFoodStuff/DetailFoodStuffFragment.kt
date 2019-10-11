@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.amebaownd.pikohan_nwiatori.healthmanagementapp.EventObserver
+import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.EventObserver
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.R
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.databinding.FragmentDetailFoodstuffBinding
 import com.amebaownd.pikohan_nwiatori.healthmanagementapp.util.getViewModelFactory
@@ -32,12 +32,14 @@ class DetailFoodStuffFragment: Fragment() {
     }
 
     private fun setObserver(){
-        detailFoodStuffViewModel.isEditStarted.observe(this, EventObserver {
+        detailFoodStuffViewModel.isEditStarted.observe(this,
+            EventObserver {
                 navigateToEditFragment()
-        })
-        detailFoodStuffViewModel.isDeleted.observe(this,EventObserver{
-            if(it) findNavController().popBackStack()
-        })
+            })
+        detailFoodStuffViewModel.isDeleted.observe(this,
+            EventObserver {
+                if (it) findNavController().popBackStack()
+            })
     }
 
     private fun setSwitch(){
@@ -52,12 +54,6 @@ class DetailFoodStuffFragment: Fragment() {
                 detailFoodStuffViewModel.foodStuff.value?.id,
                 "Edit Fragment"
             )
-        findNavController().navigate(action)
-    }
-
-    private fun navigateToFoodStuffsFragment(){
-        val action = DetailFoodStuffFragmentDirections
-            .actionDetailFoodStuffFragmentToFoodStuffsFragment()
         findNavController().navigate(action)
     }
 

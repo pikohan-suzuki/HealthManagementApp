@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.amebaownd.pikohan_nwiatori.healthmanagementapp.dish.DishesViewModel" />
+
+        <variable
+            name="dish"
+            type="com.amebaownd.pikohan_nwiatori.healthmanagementapp.data.model.Dish" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.openDetail(dish.id)}"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dish_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{dish.name}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dish_item_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{dish.calorieForList}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dish_item_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{dish.proteinForList}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dish_item_carbohydrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{dish.carbohydrateForList}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dish_item_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{dish.fatForList}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

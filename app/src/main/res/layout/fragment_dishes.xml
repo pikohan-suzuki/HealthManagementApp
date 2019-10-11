@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.amebaownd.pikohan_nwiatori.healthmanagementapp.dish.DishesViewModel" />
+    </data>
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/dishes_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dishes_list"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:dish_items="@{viewModel.allDishes}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_edit_dish_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:onClick="@{() -> viewModel.addDish()}"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_input_add"/>
+    </FrameLayout>
+</FrameLayout>
+
+</layout>

@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> viewModel.openDetail(foodstuff.id)}"
+        android:onClick="@{() -> viewModel.onClick(foodstuff)}"
         android:orientation="vertical">
 
         <TextView

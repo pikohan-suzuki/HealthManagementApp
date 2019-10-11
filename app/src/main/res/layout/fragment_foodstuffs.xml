@@ -17,31 +17,31 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/foodstuffs_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{Integer.toString(viewModel.allFoodStuffs.size())}" />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/foodstuffs_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/foodstuffs_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:items="@{viewModel.allFoodStuffs}"
+            app:foodstuff_items="@{viewModel.allFoodStuffs}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-        </LinearLayout>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_foodstuff_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
-                app:srcCompat="@android:drawable/ic_input_add" />
-        </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/add_foodstuff_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+            </FrameLayout>
+        </LinearLayout>
 
     </FrameLayout>
 </layout>

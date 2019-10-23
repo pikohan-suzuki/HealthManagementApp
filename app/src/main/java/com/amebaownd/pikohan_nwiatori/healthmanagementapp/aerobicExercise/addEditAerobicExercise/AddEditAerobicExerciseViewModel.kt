@@ -1,0 +1,4 @@
+package com.amebaownd.pikohan_nwiatori.healthmanagementapp.aerobicExercise.addEditAerobicExercise
+
+class AddEditAerobicExerciseViewModel {
+}
